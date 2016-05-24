@@ -1,4 +1,6 @@
 logs
+conf/application-production.conf
+conf/application-local-dev.conf
 project/project
 project/target
 target
