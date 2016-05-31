@@ -11,7 +11,7 @@ import play.libs.Json;
  * API結果格納クラス。
  *
  * @author yellow-man
- * @since 1.0
+ * @since 1.1
  */
 public class ApiResult {
 

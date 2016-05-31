@@ -7,7 +7,7 @@ import yokohama.yellow_man.sena.controllers.response.ApiResult;
  * 口座銘柄APIコントローラークラス。
  *
  * @author yellow-man
- * @since 1.0
+ * @since 1.1
  */
 public class AccountStocksController extends AppWebApiController {
 

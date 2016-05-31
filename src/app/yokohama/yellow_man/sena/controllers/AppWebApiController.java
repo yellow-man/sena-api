@@ -7,7 +7,7 @@ import play.mvc.Controller;
  * <p>WebAPIを実装する場合、このクラスを継承する。
  *
  * @author yellow-man
- * @since 1.0
+ * @since 1.1
  */
 public class AppWebApiController extends Controller {
 
