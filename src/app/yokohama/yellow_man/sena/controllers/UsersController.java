@@ -5,8 +5,10 @@ import java.util.Map;
 
 import play.data.Form;
 import play.mvc.Result;
-import yokohama.yellow_man.sena.controllers.response.ApiResult;
+import yokohama.yellow_man.sena.components.db.secure.UsersComponent;
+import yokohama.yellow_man.sena.core.models.secure.Users;
 import yokohama.yellow_man.sena.params.UsersCreateParams;
+import yokohama.yellow_man.sena.response.ApiResult;
 
 /**
  * ユーザーAPIコントローラークラス。
@@ -24,7 +26,7 @@ public class UsersController extends AppWebApiController {
 	 * <pre>
 	 * {
 	 *   "result": 0,
-	 *   "accessToken": "DSppLO5fTAwieE5njSnN5hh2QqcGAVC4FnryyoSYzyUzinxxXpmNdtkVOnojHFo8q09TECo4zCRWWOsR0ERyirYonADkvNad73gYJP7z8F19jshvW7xF6IvO9pMTEKoF"
+	 *   "accessToken": "ACCESS_TOKEN"
 	 * }
 	 * </pre>
 	 * @since 1.1
@@ -34,17 +36,24 @@ public class UsersController extends AppWebApiController {
 		// 返却値初期化
 		ApiResult ret = new ApiResult(API_RES_SUCCESS);
 
+		// パラメータマッピング
 		Form<UsersCreateParams> userForm = Form.form(UsersCreateParams.class).bindFromRequest();
+
+		// バリデーションチェック結果
 		if (userForm.hasErrors()) {
+			ret.setErrors(userForm.errorsAsJson());
 			ret.setResult(API_RES_FAILURE);
-			Map<String, Object> map = new HashMap<>();
-			map.put("errors", userForm.errorsAsJson());
-			ret.setContent(map);
 			return badRequest(ret.render());
 		}
 
 		UsersCreateParams usersForm = userForm.get();
 
+		// ユーザー作成
+		Users users = UsersComponent.create(usersForm.accountId, usersForm.password, usersForm.nickname);
+
+		Map<String, Object> retMap = new HashMap<>();
+		retMap.put("accessToken", users.accessToken);
+		ret.setContent(retMap);
 		return ok(ret.render());
 	}
 

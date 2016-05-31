@@ -1,4 +1,4 @@
 /**
  * WebAPIにおけるレスポンスを提供する。
  */
-package yokohama.yellow_man.sena.controllers.response;
+package yokohama.yellow_man.sena.response;

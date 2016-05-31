@@ -14,7 +14,7 @@ public class AppWebApiController extends Controller {
 	/** API結果：0.成功 */
 	public static final int API_RES_SUCCESS = 0;
 
-	/** API結果：1.失敗 */
+	/** API結果：1.失敗（バリデーションエラー） */
 	public static final int API_RES_FAILURE = 1;
 
 	/** API結果：999.システムエラー */

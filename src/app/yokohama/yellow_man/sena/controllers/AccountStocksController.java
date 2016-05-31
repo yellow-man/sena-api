@@ -1,7 +1,7 @@
 package yokohama.yellow_man.sena.controllers;
 
 import play.mvc.Result;
-import yokohama.yellow_man.sena.controllers.response.ApiResult;
+import yokohama.yellow_man.sena.response.ApiResult;
 
 /**
  * 口座銘柄APIコントローラークラス。
