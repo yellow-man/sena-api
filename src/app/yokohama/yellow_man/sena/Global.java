@@ -71,7 +71,7 @@ public class Global extends GlobalSettings {
 	}
 
 	/**
-	 * 500：エラー共通
+	 * 500：エラー共通。
 	 * @see play.GlobalSettings#onError(play.mvc.Http.RequestHeader, java.lang.Throwable)
 	 * @since 1.1
 	 */

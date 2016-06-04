@@ -36,24 +36,28 @@ public class UsersController extends AppWebApiController {
 		// 返却値初期化
 		ApiResult ret = new ApiResult(API_RES_SUCCESS);
 
-		// パラメータマッピング
-		Form<UsersCreateParams> userForm = Form.form(UsersCreateParams.class).bindFromRequest();
+		// パラメータマッピングバリデーションチェック
+		Form<UsersCreateParams> requestParams = Form.form(UsersCreateParams.class).bindFromRequest();
 
 		// バリデーションチェック結果
-		if (userForm.hasErrors()) {
-			ret.setErrors(userForm.errorsAsJson());
+		if (requestParams.hasErrors()) {
+			ret.setErrors(requestParams.errorsAsJson());
 			ret.setResult(API_RES_FAILURE);
+
 			return badRequest(ret.render());
 		}
 
-		UsersCreateParams usersForm = userForm.get();
+		// パラメータ取得
+		UsersCreateParams usersCreateParams = requestParams.get();
 
 		// ユーザー作成
-		Users users = UsersComponent.create(usersForm.accountId, usersForm.password, usersForm.nickname);
+		Users users = UsersComponent.create(usersCreateParams.accountId, usersCreateParams.password, usersCreateParams.nickname);
 
+		// レスポンスセット
 		Map<String, Object> retMap = new HashMap<>();
 		retMap.put("accessToken", users.accessToken);
 		ret.setContent(retMap);
+
 		return ok(ret.render());
 	}
 

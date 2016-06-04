@@ -10,7 +10,7 @@ import play.data.validation.Constraints.Required;
  * @author yellow-man
  * @since 1.1
  */
-public class UsersCreateParams {
+public class UsersCreateParams extends AppParams {
 
 	/** アカウントID */
 	@Required(message="アカウントID（accountId）は必須入力です。")
