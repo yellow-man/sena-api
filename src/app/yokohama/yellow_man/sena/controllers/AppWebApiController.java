@@ -1,6 +1,7 @@
 package yokohama.yellow_man.sena.controllers;
 
 import play.mvc.Controller;
+import yokohama.yellow_man.sena.annotations.PerformanceCheck;
 
 /**
  * WebAPIコントローラー基底クラス。
@@ -9,6 +10,7 @@ import play.mvc.Controller;
  * @author yellow-man
  * @since 1.1
  */
+@PerformanceCheck
 public class AppWebApiController extends Controller {
 
 	/** API結果：0.成功 */

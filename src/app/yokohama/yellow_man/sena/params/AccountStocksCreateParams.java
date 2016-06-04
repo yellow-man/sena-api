@@ -1,14 +1,12 @@
 package yokohama.yellow_man.sena.params;
 
-import java.io.IOException;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import play.data.validation.Constraints.Required;
 import play.data.validation.Constraints.ValidateWith;
+import yokohama.yellow_man.sena.core.components.AppLogger;
 import yokohama.yellow_man.sena.params.validator.AccessTokenValidator;
 import yokohama.yellow_man.sena.params.validator.StocksJsonValidator;
 
@@ -79,12 +77,8 @@ public class AccountStocksCreateParams extends AppParams {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			ret = mapper.readValue(stocksJson, StocksJson.class);
-		} catch (JsonParseException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			AppLogger.warn("銘柄情報（stocksJson）パース時にエラーが発生しました。：stocksJson=" + stocksJson, e);
 		}
 		return ret;
 	}

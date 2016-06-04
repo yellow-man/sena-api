@@ -13,7 +13,7 @@
 		</triggeringPolicy>
 
 		<encoder>
-			<pattern>[%date{yyyy-MM-dd HH:mm:ss:SSS}] [%level] [%.5thread] [%logger] [%X{fileline}] [%msg] %xEx%n</pattern>
+			<pattern>[%date{yyyy-MM-dd HH:mm:ss:SSS}] [%level] [%.5thread] [%logger] [%X{sid}] [%X{fileline}] [%msg] %xEx%n</pattern>
 		</encoder>
 	</appender>
 
@@ -25,7 +25,7 @@
 		</rollingPolicy>
 
 		<encoder>
-			<pattern>[%date{yyyy-MM-dd HH:mm:ss:SSS}] [%level] [%.5thread] [%logger] [%X{fileline}] [%msg] %xEx%n</pattern>
+			<pattern>[%date{yyyy-MM-dd HH:mm:ss:SSS}] [%level] [%.5thread] [%logger] [%X{sid}] [%X{fileline}] [%msg] %xEx%n</pattern>
 		</encoder>
 
 		<filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -37,7 +37,7 @@
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>[%date{yyyy-MM-dd HH:mm:ss:SSS}] [%level] [%.5thread] [%logger] [%X{fileline}] [%msg] %xEx%n</pattern>
+			<pattern>[%date{yyyy-MM-dd HH:mm:ss:SSS}] [%level] [%.5thread] [%logger] [%X{sid}] [%X{fileline}] [%msg] %xEx%n</pattern>
 		</encoder>
 	</appender>
 

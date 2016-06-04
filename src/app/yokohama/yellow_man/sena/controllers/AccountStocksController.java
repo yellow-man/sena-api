@@ -3,6 +3,7 @@ package yokohama.yellow_man.sena.controllers;
 import play.data.Form;
 import play.mvc.Result;
 import yokohama.yellow_man.common_tools.ListUtils;
+import yokohama.yellow_man.sena.annotations.UsersTrace;
 import yokohama.yellow_man.sena.core.components.AppLogger;
 import yokohama.yellow_man.sena.params.AccountStocksCreateParams;
 import yokohama.yellow_man.sena.params.AccountStocksCreateParams.StocksJson;
@@ -15,6 +16,7 @@ import yokohama.yellow_man.sena.response.ApiResult;
  * @author yellow-man
  * @since 1.1
  */
+@UsersTrace
 public class AccountStocksController extends AppWebApiController {
 
 	public static Result getList() {
