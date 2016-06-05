@@ -17,6 +17,9 @@ import yokohama.yellow_man.sena.core.models.secure.Users;
  */
 public class UsersTraceAction extends Action<UsersTraceAction> {
 
+	/** コンテキストパラメータ：ユーザー情報 */
+	public static final String CONTEXT_PARAMETER_NAME_USERS = "users";
+
 	/** リクエストパラメータ：アクセストークン */
 	private static final String PARAMS_NAME_ACCESS_TOKEN = "accessToken";
 
@@ -34,6 +37,9 @@ public class UsersTraceAction extends Action<UsersTraceAction> {
 			Users users = UsersComponent.getUsersByAccessToken(accessToken);
 			if (users != null) {
 				usersIdBuff.append(String.valueOf(users.id));
+
+				// ユーザー情報をコンテキストから利用可能なように詰める
+				ctx.args.put(CONTEXT_PARAMETER_NAME_USERS, users);
 			}
 		}
 

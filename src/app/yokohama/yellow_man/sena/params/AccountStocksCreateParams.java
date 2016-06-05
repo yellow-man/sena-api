@@ -17,14 +17,17 @@ import yokohama.yellow_man.sena.params.validator.AppValidator;
  */
 public class AccountStocksCreateParams extends AppParams {
 
+	/** アクセストークン */
 	@Required(message="アクセストークン（accessToken）は必須入力です。")
 	@AppValidator.AccessToken(message="アクセストークン（accessToken）が不正です。")
 	public String accessToken;
 
-	@Required(message="取得日（date）は必須入力です。")
-	@AppValidator.Date(value=DateUtils.DATE_FORMAT_YYYYMMDDHHMMSS, message="取得日（date）が不正です。")
+	/** 取得日時 */
+	@Required(message="取得日時（date）は必須入力です。")
+	@AppValidator.Date(value=DateUtils.DATE_FORMAT_YYYYMMDDHHMMSS, message="取得日時（date）が不正です。")
 	public String date;
 
+	/** 銘柄情報 */
 	@Required(message="銘柄情報（stocksJson）は必須入力です。")
 	@AppValidator.StocksJson(message="銘柄情報（stocksJson）が不正です。")
 	public String stocksJson;
@@ -45,8 +48,6 @@ public class AccountStocksCreateParams extends AppParams {
 		 * @since 1.1
 		 */
 		public static class Stocks {
-			/** 日付 date （yyyyMMdd） */
-			public String date;
 			/** 銘柄コード */
 			public Integer stockCode;
 			/** 取引種別（1...国内株式、2...金額・株数指定取引、3...信用建玉（買建）、4...信用建玉（売建）） */
