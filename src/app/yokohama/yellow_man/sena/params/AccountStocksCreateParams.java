@@ -5,10 +5,9 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import play.data.validation.Constraints.Required;
-import play.data.validation.Constraints.ValidateWith;
+import yokohama.yellow_man.common_tools.DateUtils;
 import yokohama.yellow_man.sena.core.components.AppLogger;
-import yokohama.yellow_man.sena.params.validator.AccessTokenValidator;
-import yokohama.yellow_man.sena.params.validator.StocksJsonValidator;
+import yokohama.yellow_man.sena.params.validator.AppValidator;
 
 /**
  * [POST] /account_stocks/create パラメータマッピングクラス。
@@ -19,11 +18,15 @@ import yokohama.yellow_man.sena.params.validator.StocksJsonValidator;
 public class AccountStocksCreateParams extends AppParams {
 
 	@Required(message="アクセストークン（accessToken）は必須入力です。")
-	@ValidateWith(value=AccessTokenValidator.class, message="アクセストークン（accessToken）が不正です。")
+	@AppValidator.AccessToken(message="アクセストークン（accessToken）が不正です。")
 	public String accessToken;
 
+	@Required(message="取得日（date）は必須入力です。")
+	@AppValidator.Date(value=DateUtils.DATE_FORMAT_YYYYMMDDHHMMSS, message="取得日（date）が不正です。")
+	public String date;
+
 	@Required(message="銘柄情報（stocksJson）は必須入力です。")
-	@ValidateWith(value=StocksJsonValidator.class, message="銘柄情報（stocksJson）が不正です。")
+	@AppValidator.StocksJson(message="銘柄情報（stocksJson）が不正です。")
 	public String stocksJson;
 
 	/**

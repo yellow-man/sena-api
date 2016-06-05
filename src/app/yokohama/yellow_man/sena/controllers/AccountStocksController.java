@@ -2,9 +2,7 @@ package yokohama.yellow_man.sena.controllers;
 
 import play.data.Form;
 import play.mvc.Result;
-import yokohama.yellow_man.common_tools.ListUtils;
 import yokohama.yellow_man.sena.annotations.UsersTrace;
-import yokohama.yellow_man.sena.core.components.AppLogger;
 import yokohama.yellow_man.sena.params.AccountStocksCreateParams;
 import yokohama.yellow_man.sena.params.AccountStocksCreateParams.StocksJson;
 import yokohama.yellow_man.sena.response.ApiResult;
@@ -51,8 +49,8 @@ public class AccountStocksController extends AppWebApiController {
 		// パラメータ取得
 		AccountStocksCreateParams accountStocksParams = requestParams.get();
 
+		// jsonをパース
 		StocksJson stocksJson = accountStocksParams.paseStocksJson();
-		AppLogger.debug(ListUtils.toString(stocksJson.stocks));
 
 		return ok(ret.render());
 	}
