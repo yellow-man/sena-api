@@ -67,7 +67,6 @@ public class AppValidator extends Constraints {
 		/**
 		 * 初期化処理。
 		 * <p>このクラスの{@code format}を{@code paramFormat.value()}で初期化する。
-		 * @see javax.validation.ConstraintValidator#initialize(A)
 		 * @since 1.1
 		 */
 		@Override
@@ -79,7 +78,6 @@ public class AppValidator extends Constraints {
 		 * バリデーションチェック。
 		 * <p>指定された日付{@code date}が、フォーマット{@code format}に適合する場合、{@code true}。
 		 * 適合しない場合、{@code false}を返す。
-		 * @see play.data.validation.Constraints.Validator#isValid(T)
 		 * @since 1.1
 		 */
 		@Override
@@ -89,7 +87,6 @@ public class AppValidator extends Constraints {
 
 		/**
 		 * デフォルトエラーメッセージキー。
-		 * @see play.data.validation.Constraints.Validator#getErrorMessageKey()
 		 * @since 1.1
 		 */
 		@Override
@@ -131,7 +128,6 @@ public class AppValidator extends Constraints {
 
 		/**
 		 * 初期化処理。
-		 * @see javax.validation.ConstraintValidator#initialize(A)
 		 * @since 1.1
 		 */
 		@Override
@@ -141,7 +137,6 @@ public class AppValidator extends Constraints {
 		 * バリデーションチェック。
 		 * <p>アクセストークンからユーザー情報が取得できた場合{@code true}、
 		 * 取得できない場合{@code false}を返す。
-		 * @see play.data.validation.Constraints.Validator#isValid(T)
 		 * @since 1.1
 		 */
 		@Override
@@ -152,7 +147,6 @@ public class AppValidator extends Constraints {
 
 		/**
 		 * デフォルトエラーメッセージキー。
-		 * @see play.data.validation.Constraints.Validator#getErrorMessageKey()
 		 * @since 1.1
 		 */
 		@Override
@@ -199,7 +193,6 @@ public class AppValidator extends Constraints {
 
 		/**
 		 * 初期化処理。
-		 * @see javax.validation.ConstraintValidator#initialize(A)
 		 * @since 1.1
 		 */
 		@Override
@@ -211,13 +204,12 @@ public class AppValidator extends Constraints {
 		 * <ul>
 		 * <li>銘柄情報jsonが、jsonとして解析できない場合エラー。
 		 * <li>銘柄情報jsonで指定できる最大レコード件数{@code STOCKS_JSON_LIST_MAX_SIZE=50}を超える場合エラー。
-		 * <li>取引種別（type）が指定項目ID{@link AppConsts.STOCKS_TYPE_MAP}以外の場合エラー。
+		 * <li>取引種別（type）が指定項目ID{@link AppConsts#STOCKS_TYPE_MAP}以外の場合エラー。
 		 * <li>保有株数（amount）が少数値として解析できない場合エラー。
 		 * <li>平均取得単価（averageCost）が少数値として解析できない場合エラー。
 		 * <li>現在値（currentValue）が少数値として解析できない場合エラー。
 		 * </ul>
 		 * 上記チェック項目がすべて正常な場合{@code true}を返す。
-		 * @see play.data.validation.Constraints.Validator#isValid(T)
 		 * @since 1.1
 		 */
 		@Override
@@ -272,7 +264,6 @@ public class AppValidator extends Constraints {
 
 		/**
 		 * デフォルトエラーメッセージキー。
-		 * @see play.data.validation.Constraints.Validator#getErrorMessageKey()
 		 * @since 1.1
 		 */
 		@Override

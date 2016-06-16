@@ -14,23 +14,17 @@ import yokohama.yellow_man.sena.params.AccountStocksCreateParams.StocksJson;
 import yokohama.yellow_man.sena.response.ApiResult;
 
 /**
- * 口座銘柄APIコントローラークラス。
- * <p>口座銘柄登録、一覧取得の機能を提供する。
+ * 口座サマリーAPIコントローラークラス。
+ * <p>口座サマリー登録、一覧取得の機能を提供する。
  *
  * @author yellow-man
  * @since 1.1
  */
 @UsersTrace
-public class AccountStocksController extends AppWebApiController {
-
-	public static Result getList() {
-		// 返却値初期化
-		ApiResult ret = new ApiResult(API_RES_SUCCESS);
-		return ok(ret.render());
-	}
+public class AccountSummariesController extends AppWebApiController {
 
 	/**
-	 * 口座銘柄を登録する。
+	 * 口座サマリーを登録する。
 	 * <p>日付、銘柄コード、取引種別で既に登録済みの場合、
 	 * データベースに保存されている同一レコードの情報を更新する。
 	 *

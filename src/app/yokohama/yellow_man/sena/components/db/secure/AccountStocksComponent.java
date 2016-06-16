@@ -45,10 +45,10 @@ public class AccountStocksComponent extends yokohama.yellow_man.sena.core.compon
 			accountStocks.averageCost = NumberUtils.toBigDecimal(stocksJson.averageCost);
 			accountStocks.currentValue = NumberUtils.toBigDecimal(stocksJson.currentValue);
 			accountStocks.marketValue = accountStocks.amount.multiply(accountStocks.currentValue);
-			accountStocks.gainLoss = accountStocks.marketValue.subtract(accountStocks.amount.multiply(accountStocks.averageCost));
-			accountStocks.gainLossRate =
+			accountStocks.profitLoss = accountStocks.marketValue.subtract(accountStocks.amount.multiply(accountStocks.averageCost));
+			accountStocks.profitLossRate =
 					new BigDecimal(100).multiply(
-							accountStocks.gainLoss.divide(accountStocks.marketValue, 4, BigDecimal.ROUND_HALF_UP));
+							accountStocks.profitLoss.divide(accountStocks.marketValue, 4, BigDecimal.ROUND_HALF_UP));
 			accountStocks.created = now;
 			accountStocks.modified = now;
 			accountStocks.deleteFlg = false;
