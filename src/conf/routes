@@ -9,3 +9,6 @@ POST    /1.1.0/users/login.json                            yokohama.yellow_man.s
 # AccountStocks
 GET     /1.1.0/account_stocks/list.json                    yokohama.yellow_man.sena.controllers.AccountStocksController.getList()
 POST    /1.1.0/account_stocks/create.json                  yokohama.yellow_man.sena.controllers.AccountStocksController.postCreate()
+
+# AccountSummaries
+POST    /1.1.0/account_summaries/create.json               yokohama.yellow_man.sena.controllers.AccountSummariesController.postCreate()

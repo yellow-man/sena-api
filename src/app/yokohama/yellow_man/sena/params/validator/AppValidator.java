@@ -82,6 +82,9 @@ public class AppValidator extends Constraints {
 		 */
 		@Override
 		public boolean isValid(String date) {
+			if (CheckUtils.isEmpty(date)) {
+				return true;
+			}
 			return DateUtils.toDate(date, this.format) != null;
 		}
 
@@ -141,6 +144,9 @@ public class AppValidator extends Constraints {
 		 */
 		@Override
 		public boolean isValid(String accessToken) {
+			if (CheckUtils.isEmpty(accessToken)) {
+				return true;
+			}
 			Users users = UsersComponent.getUsersByAccessToken(accessToken);
 			return (users != null);
 		}
@@ -216,11 +222,15 @@ public class AppValidator extends Constraints {
 		public boolean isValid(String stocksJson) {
 			String errorMessage = new StringBuffer("：stocksJson=").append(stocksJson).toString();
 
+			if (CheckUtils.isEmpty(stocksJson)) {
+				return true;
+			}
+
 			// json解析
 			yokohama.yellow_man.sena.params.AccountStocksCreateParams.StocksJson retStocksJson =
 					AccountStocksCreateParams.paseStocksJson(stocksJson);
 
-			if (retStocksJson == null || CheckUtils.isEmpty(retStocksJson.stocks)) {
+			if (CheckUtils.isEmpty(retStocksJson.stocks)) {
 				AppLogger.warn("json解析ができない。" + errorMessage);
 				return false;
 			}
@@ -257,6 +267,90 @@ public class AppValidator extends Constraints {
 					AppLogger.warn("現在値（currentValue）が不正" + errorMessage);
 					return false;
 				}
+			}
+
+			return true;
+		}
+
+		/**
+		 * デフォルトエラーメッセージキー。
+		 * @since 1.1
+		 */
+		@Override
+		public Tuple<String, Object[]> getErrorMessageKey() {
+			return F.Tuple("error.invalid", new Object[0]);
+		}
+	}
+
+	/**
+	 * BigDecimalバリデーションアノテーション定義。
+	 * <p>使用方法
+	 * <pre>
+	 * {@code @AppValidator.BigDecimal(min="0.00", max="999999999.99" message="数値が不正です。")}
+	 * </pre>
+	 * @author yellow-man
+	 * @since 1.1
+	 * @see yokohama.yellow_man.sena.params.validator.AppValidator.BigDecimalValidator
+	 */
+	@Target({ java.lang.annotation.ElementType.FIELD })
+	@Retention(RetentionPolicy.RUNTIME)
+	@Constraint(validatedBy = { AppValidator.BigDecimalValidator.class })
+	@play.data.Form.Display(name = "appvalidator.bigdecimal", attributes = { "min", "max" })
+	public static @interface BigDecimal {
+		String message() default "error.invalid";
+
+		Class<?>[] groups() default {};
+
+		Class<? extends Payload>[] payload() default {};
+
+		String min();
+
+		String max();
+	}
+
+	/**
+	 * BigDecimalバリデーションクラス。
+	 * @author yellow-man
+	 * @since 1.1
+	 * @see yokohama.yellow_man.sena.params.validator.AppValidator.BigDecimal
+	 */
+	public static class BigDecimalValidator extends Constraints.Validator<java.math.BigDecimal>
+			implements ConstraintValidator<AppValidator.BigDecimal, java.math.BigDecimal>{
+
+		private String min;
+
+		private String max;
+
+		/**
+		 * 初期化処理。
+		 * <p>このクラスの{@code min}、{@code max}を{@code param.min()}、{@code param.max()}で初期化する。
+		 * @since 1.1
+		 */
+		@Override
+		public void initialize(AppValidator.BigDecimal param) {
+			this.min = param.min();
+			this.max = param.max();
+		}
+
+		/**
+		 * バリデーションチェック。
+		 * <p>指定された日付{@code date}が、フォーマット{@code format}に適合する場合、{@code true}。
+		 * 適合しない場合、{@code false}を返す。
+		 * @since 1.1
+		 */
+		@Override
+		public boolean isValid(java.math.BigDecimal targetDecimal) {
+			if (targetDecimal == null) {
+				return true;
+			}
+			java.math.BigDecimal minDecimal    = new java.math.BigDecimal(this.min);
+			java.math.BigDecimal maxDecimal    = new java.math.BigDecimal(this.max);
+
+			if (minDecimal.compareTo(targetDecimal) > 0) {
+				return false;
+			}
+			if (maxDecimal.compareTo(targetDecimal) < 0) {
+				return false;
 			}
 
 			return true;
