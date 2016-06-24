@@ -10,7 +10,7 @@ import yokohama.yellow_man.sena.annotations.action.PerformanceCheckAction;
 import yokohama.yellow_man.sena.annotations.action.UsersTraceAction;
 
 /**
- * パフォーマンスチェック 中継処理 呼び出しアノテーション定義。
+ * パフォーマンスチェック中継処理 アノテーション定義。
  * @author yellow-man
  * @since 1.1
  * @see UsersTraceAction

@@ -5,7 +5,7 @@ import yokohama.yellow_man.sena.core.models.secure.AccountSummaries;
 import yokohama.yellow_man.sena.params.AccountSummariesCreateParams;
 
 /**
- * 口座銘柄（account_stocks）モデルの操作を行うコンポーネントクラス。
+ * 口座サマリー（account_summaries）モデルの操作を行うコンポーネントクラス。
  *
  * @author yellow-man
  * @since 1.1
@@ -13,9 +13,9 @@ import yokohama.yellow_man.sena.params.AccountSummariesCreateParams;
 public class AccountSummariesComponent extends yokohama.yellow_man.sena.core.components.db.secure.AccountSummariesComponent {
 
 	/**
-	 * 口座銘柄（account_stocks）作成処理。
+	 * 口座サマリー（account_summaries）作成処理。
 	 * @param usersId ユーザーID
-	 * @param accountStocksParams {@link yokohama.yellow_man.sena.params.AccountSummariesCreateParams}
+	 * @param accountStocksParams {@link yokohama.yellow_man.sena.params.AccountSummariesCreateParams} 口座サマリーパラメータマッピングクラス
 	 * @since 1.1
 	 */
 	public static void create(Long usersId, AccountSummariesCreateParams accountStocksParams) {

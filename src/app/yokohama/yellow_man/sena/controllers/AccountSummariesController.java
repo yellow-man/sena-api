@@ -21,8 +21,6 @@ public class AccountSummariesController extends AppWebApiController {
 
 	/**
 	 * 口座サマリーを登録する。
-	 * <p>日付、銘柄コード、取引種別で既に登録済みの場合、
-	 * データベースに保存されている同一レコードの情報を更新する。
 	 *
 	 * @return json文字列
 	 * <pre>

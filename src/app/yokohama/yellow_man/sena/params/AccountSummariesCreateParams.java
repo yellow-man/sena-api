@@ -27,73 +27,75 @@ public class AccountSummariesCreateParams extends AppParams {
 	public String date;
 
 	/** 信用建余力 */
-	@Min(value=0L, message="信用建余力（freeMargin）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="信用建余力（freeMargin）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="信用建余力（freeMargin）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="信用建余力（freeMargin）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long freeMargin;
 
 	/** 現引可能額 */
-	@Min(value=0L, message="現引可能額（stockPurchased）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="現引可能額（stockPurchased）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="現引可能額（stockPurchased）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="現引可能額（stockPurchased）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long stockPurchased;
 
 	/** 委託保証金現金 */
-	@Min(value=0L, message="委託保証金現金（initialMarginCache）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="委託保証金現金（initialMarginCache）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="委託保証金現金（initialMarginCache）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="委託保証金現金（initialMarginCache）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long initialMarginCache;
 
 	/** 代用有価証券評価額合計 */
-	@Min(value=0L, message="代用有価証券評価額合計（initialMarginValue）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="代用有価証券評価額合計（initialMarginValue）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="代用有価証券評価額合計（initialMarginValue）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="代用有価証券評価額合計（initialMarginValue）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long initialMarginValue;
 
 	/** 評価損・決済損益・支払諸経費等合計 */
-	@Min(value=-999999999999999L, message="評価損・決済損益・支払諸経費等合計（paymentExpensesTotal）は-999999999999999～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="評価損・決済損益・支払諸経費等合計（paymentExpensesTotal）は-999999999999999～999999999999999で指定してください。")
+	@Min(value=-999999999999999L, message="評価損・決済損益・支払諸経費等合計（paymentExpensesTotal）は-999,999,999,999,999～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="評価損・決済損益・支払諸経費等合計（paymentExpensesTotal）は-999,999,999,999,999～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long paymentExpensesTotal;
 
 	/** 実質保証金 */
-	@Min(value=0L, message="実質保証金（initialMargin）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="実質保証金（initialMargin）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="実質保証金（initialMargin）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="実質保証金（initialMargin）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long initialMargin;
 
 	/** 建代金合計 */
-	@Min(value=0L, message="建代金合計（openInterest）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="建代金合計（openInterest）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="建代金合計（openInterest）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="建代金合計（openInterest）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long openInterest;
 
-	/** 委託保証金率 */
+	/** 委託保証金率（整数部：8桁、小数部：2桁） */
 	@AppValidator.BigDecimal(min="0.00", max="999999999.99", message="委託保証金率（maintenanceRequirement）は0.00～999999999.99で指定してください。")
 	public BigDecimal maintenanceRequirement;
 
-	/** 参考委託保証金率 */
+	/** 参考委託保証金率（整数部：8桁、小数部：2桁） */
 	@AppValidator.BigDecimal(min="0.00", max="999999999.99", message="参考委託保証金率（refMaintenanceRequirement）は0.00～999999999.99で指定してください。")
 	public BigDecimal refMaintenanceRequirement;
 
 	/** 買付余力 */
 	@Required(message="買付余力（freeCache）は必須入力です。")
-	@Min(value=0L, message="買付余力（freeCache）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="買付余力（freeCache）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="買付余力（freeCache）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="買付余力（freeCache）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long freeCache;
 
 	/** 現金残高等 */
 	@Required(message="現金残高等（freeCacheEtc）は必須入力です。")
-	@Min(value=0L, message="現金残高等（freeCacheEtc）は0～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="現金残高等（freeCacheEtc）は0～999999999999999で指定してください。")
+	@Min(value=0L,                message="現金残高等（freeCacheEtc）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="現金残高等（freeCacheEtc）は0～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long freeCacheEtc;
 
 	/** 株式 */
 	@Required(message="株式（assetValue）は必須入力です。")
-	@AppValidator.BigDecimal(min="0.00000", max="999999999999999.99999", message="株式（assetValue）は0.00000～999999999999999.99999で指定してください。")
-	public BigDecimal assetValue;
+	@Min(value=0L,                message="株式（assetValue）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="株式（assetValue）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	public Long assetValue;
 
 	/** 建玉評価損益額 */
 	@Required(message="建玉評価損益額（marginProfitLoss）は必須入力です。")
-	@Min(value=-999999999999999L, message="建玉評価損益額（marginProfitLoss）は-999999999999999～999999999999999で指定してください。")
-	@Max(value=999999999999999L, message="建玉評価損益額（marginProfitLoss）は-999999999999999～999999999999999で指定してください。")
+	@Min(value=-999999999999999L, message="建玉評価損益額（marginProfitLoss）は-999,999,999,999,999～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="建玉評価損益額（marginProfitLoss）は-999,999,999,999,999～999,999,999,999,999（カンマ無し）で指定してください。")
 	public Long marginProfitLoss;
 
 	/** 計 */
 	@Required(message="計（accountBalance）は必須入力です。")
-	@AppValidator.BigDecimal(min="0.00000", max="999999999999999.99999", message="計（accountBalance）は0.00000～999999999999999.99999で指定してください。")
-	public BigDecimal accountBalance;
+	@Min(value=0L,                message="計（accountBalance）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	@Max(value=999999999999999L,  message="計（accountBalance）は0～999,999,999,999,999（カンマ無し）で指定してください。")
+	public Long accountBalance;
 }
