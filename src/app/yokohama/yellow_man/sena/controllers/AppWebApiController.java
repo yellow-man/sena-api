@@ -1,6 +1,7 @@
 package yokohama.yellow_man.sena.controllers;
 
 import play.mvc.Controller;
+import yokohama.yellow_man.sena.annotations.ParamsTrace;
 import yokohama.yellow_man.sena.annotations.PerformanceCheck;
 
 /**
@@ -11,6 +12,7 @@ import yokohama.yellow_man.sena.annotations.PerformanceCheck;
  * @since 1.1
  */
 @PerformanceCheck
+@ParamsTrace
 public class AppWebApiController extends Controller {
 
 	/** API結果：0.成功 */
